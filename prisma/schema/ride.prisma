@@ -1,0 +1,14 @@
+model Ride {
+    id         Int             @id @default(autoincrement())
+    uuid       String          @unique
+    from       String
+    to         String
+    date       DateTime
+    fare       Int
+    distance   Float
+    driver     Driver          @relation(fields: [driverId], references: [id])
+    driverId   Int
+    passengers PassengerRide[]
+    createdAt  DateTime        @default(now())
+    updatedAt  DateTime        @updatedAt
+}

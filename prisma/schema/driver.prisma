@@ -1,0 +1,24 @@
+model Driver {
+    id        Int      @id @default(autoincrement())
+    uuid      String   @unique
+    email     String   @unique
+    name      String
+    password  String
+    car       Car?     @relation(fields: [carId], references: [id])
+    carId     Int?
+    rides     Ride[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Car {
+    id          Int      @id @default(autoincrement())
+    uuid        String   @unique
+    brand       String
+    model       String
+    year        Int
+    numberPlate String   @unique
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    Driver      Driver[]
+}

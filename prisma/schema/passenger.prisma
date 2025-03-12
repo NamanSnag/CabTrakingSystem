@@ -1,0 +1,18 @@
+model Passenger {
+    id            Int             @id @default(autoincrement())
+    uuid          String          @unique
+    email         String          @unique
+    name          String
+    createdAt     DateTime        @default(now())
+    updatedAt     DateTime        @updatedAt
+    PassengerRide PassengerRide[]
+}
+
+model PassengerRide {
+    id          Int       @id @default(autoincrement())
+    passenger   Passenger @relation(fields: [passengerId], references: [id])
+    passengerId Int
+    ride        Ride      @relation(fields: [rideId], references: [id])
+    rideId      Int
+    createdAt   DateTime  @default(now())
+}
