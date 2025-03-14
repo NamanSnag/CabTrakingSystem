@@ -17,7 +17,7 @@ A backend system for real-time cab tracking using WebSockets and Google Maps API
 
 1. **Clone the repository**:
 ```bash
-git clone https://github.com/yourusername/cab-tracking-system.git
+git clone https://github.com/NamanSnag/CabTrakingSystem.git
 ```
 cd cab-tracking-system
 
