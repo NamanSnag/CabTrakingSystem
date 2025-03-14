@@ -6,6 +6,10 @@ model Driver {
     password  String
     car       Car?     @relation(fields: [carId], references: [id])
     carId     Int?
+    active    Boolean  @default(false)
+    lat       Float?
+    lng       Float?
+    isBooked Boolean  @default(false)
     rides     Ride[]
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

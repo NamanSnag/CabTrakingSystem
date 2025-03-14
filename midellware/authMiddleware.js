@@ -1,4 +1,5 @@
-import {decode} from "../lib/jwtToken.js";
+import prisma from "../configs/dbConfig.js";
+import { decode } from "../configs/jwtAuth.js";
 import { errorResponse } from "../utils/responses.js";
 
 export const authenticate = async (req, res, next) => {
@@ -18,7 +19,9 @@ export const authenticate = async (req, res, next) => {
       return res.status(401).json({ error: "Unauthorized - Invalid token" });
     }
 
-    const user = await User.findById(userId);
+    const user = await prisma.user.findUnique({
+      where: { uuid: userId },
+    });
 
     if (!user) {
       console.error("token validated but user not found!!!");

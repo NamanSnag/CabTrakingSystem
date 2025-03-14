@@ -8,7 +8,7 @@ const secretKey = process.env.JWT_SECRET_KEY || "your_secret_key";
  * @param {string} [expiresIn] - Optional expiration time for the token.
  * @returns {string} - The encoded JWT token.
  */
-export const encode = (userId, expiresIn = null) => {
+export const encode = (userId, expiresIn = "24h") => {
   // Payload for the JWT
   const payload = {
     user: {
